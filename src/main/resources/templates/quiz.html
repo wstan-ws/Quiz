@@ -3,25 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <link rel="stylesheet" href="/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <title>Quiz</title>
     </head>
     <body>
         
         <div class="header">
-            <a href="/home">LOGO</a>
+            <a href="/home">
+                <img id="logo" src="/logo.png" alt="">
+            </a>
         </div>
 
         <div class="body">
-            <div class="box">
-                <p>Current Score: <span data-th-text="${score}"></span></p>
+            <p class="question">Current Score: <span data-th-text="${score}"></span></p>
+            <div class="box3">
                 <form method="POST" data-th-action="@{/next}" data-th-object="${currentQuestion}">
-                    <p data-th-text="*{question}"></p>
+                    <p class="question" data-th-text="*{question}"></p>
                     <div data-th-each="answer : ${currentQuestion.allAnswers}">
                         <input type="radio" id="answer" name="answer" data-th-value="${answer}" required>
                         <label for="answer" data-th-text="${answer}"></label>
                     </div>
                     <br>
-                    <button type="submit">Submit Answer</button>
+                    <button class="button" type="submit">Submit Answer</button>
                 </form>
             </div>
         </div>

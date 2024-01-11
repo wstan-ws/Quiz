@@ -3,17 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
         <title>Quiz Selection</title>
     </head>
     <body>
         
         <div class="header">
-            <a href="/home">LOGO</a>
+            <a href="/home">
+                <img id="logo" src="/logo.png" alt="">
+            </a>
         </div>
         
         <div class="body">
-            <div class="box">
-                <p class="title">Quiz Selection</p>
+            <div class="box2">
                 <form method="POST" data-th-action="@{/quiz}" data-th-object="${quizForm}">
                     <table>
                         <tr>
@@ -25,7 +28,7 @@
                             </select>
                         </tr>
                         <tr>
-                            <p class="difficulty">Difficulty</p>
+                            <p class="question">Difficulty</p>
                             <select name="difficulty" id="difficulty" data-th-field="*{difficulty}">
                                 <option value="easy">Easy</option>
                                 <option value="medium">Medium</option>
@@ -33,7 +36,7 @@
                             </select>
                         </tr>
                         <tr>
-                            <p class="categories">Categories</p>
+                            <p class="question">Categories</p>
                             <input type="checkbox" id="music" name="music" value="music" data-th-field="*{categories}">
                             <label for="music">Music</label>
                             <input type="checkbox" id="sport_and_leisure" name="sport_and_leisure" value="sport_and_leisure" data-th-field="*{categories}">
@@ -43,7 +46,7 @@
                             <input type="checkbox" id="arts_and_literature" name="arts_and_literature" value="arts_and_literature" data-th-field="*{categories}">
                             <label for="arts_and_literature">Arts & Literature</label>
                             <input type="checkbox" id="history" name="history" value="history" data-th-field="*{categories}">
-                            <label for="history">History</label>
+                            <label for="history">History</label><br>
                             <input type="checkbox" id="society_and_culture" name="society_and_culture" value="society_and_culture" data-th-field="*{categories}">
                             <label for="society_and_culture">Society & Culture</label>
                             <input type="checkbox" id="science" name="science" value="science" data-th-field="*{categories}">
@@ -51,14 +54,14 @@
                             <input type="checkbox" id="geography" name="geography" value="geography" data-th-field="*{categories}">
                             <label for="geography">Geography</label>
                             <input type="checkbox" id="food_and_drink" name="food_and_drink" value="food_and_drink" data-th-field="*{categories}">
-                            <label for="food_and_drink">Food & Drink</label>
+                            <label for="food_and_drink">Food & Drink</label><br>
                             <input type="checkbox" id="general_knowledge" name="general_knowledge" value="general_knowledge" data-th-field="*{categories}">
                             <label for="general_knowledge">General Knowledge</label>
                             <br>
                             <span data-th-if="${#fields.hasErrors('categories')}" data-th-errors="*{categories}" data-th-errorclass="error"></span>
                         </tr>
                         <br>
-                        <button type="submit">Generate Quiz</button>
+                        <button class="button" type="submit">Generate Quiz</button>
                     </table>
                 </form>
             </div>

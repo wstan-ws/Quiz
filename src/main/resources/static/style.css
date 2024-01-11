@@ -1,0 +1,154 @@
+body{
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+#logo{
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+}
+
+.body{
+    text-align: center;
+}
+
+.box{
+    border-style: solid;
+    border-radius: 20px;
+    border-color: antiquewhite;
+    background-color: antiquewhite;
+    width: 500px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#startbutton{
+    font-family: 'Acme';
+    font-size: 50px;
+    width: 300px;
+    text-decoration: none;
+    color: #f5a42a;
+    border-style: solid;
+    border-radius: 50px;
+    border-spacing: 20px;
+    border-color: indigo;
+    background-color: indigo;
+}
+
+#startbutton:hover{
+    color: indigo;
+    border-color: #f5a42a;
+    background-color: #f5a42a;
+    transform: scale(1.1);
+}
+
+#startbutton:active{
+    color: #f5a42a;
+}
+
+.question{
+    font-family: 'Acme';
+    font-size: 30px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+select{
+    width: 100px;
+}
+
+.box2{
+    border-style: solid;
+    border-radius: 20px;
+    border-color: antiquewhite;
+    background-color: antiquewhite;
+    width: 500px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    font-family: 'Acme';
+    font-size: 25px;
+    width: 300px;
+    text-decoration: none;
+    color: #f5a42a;
+    border-style: solid;
+    border-radius: 50px;
+    border-spacing: 10px;
+    border-color: indigo;
+    background-color: indigo;
+    margin-top: 30px;
+}
+
+.button:hover{
+    color: indigo;
+    border-color: #f5a42a;
+    background-color: #f5a42a;
+    transform: scale(1.2);
+}
+
+.button:active{
+    color: #f5a42a;
+}
+
+label{
+    font-family: 'Acme';
+    font-size: 15px;
+}
+
+.error{
+    font-family: 'Acme';
+    font-size: 15px;
+    color: red;
+}
+
+.box3{
+    border-style: solid;
+    border-radius: 20px;
+    border-color: antiquewhite;
+    background-color: antiquewhite;
+    width: 700px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#complete{
+    font-family: 'Acme';
+    font-size: 50px;
+}
+
+#backbutton{
+    font-family: 'Acme';
+    font-size: 25px;
+    width: 300px;
+    text-decoration: none;
+    color: #f5a42a;
+    border-style: solid;
+    border-radius: 50px;
+    border-spacing: 20px;
+    border-color: indigo;
+    background-color: indigo;
+}
+
+#backbutton:hover{
+    color: indigo;
+    border-color: #f5a42a;
+    background-color: #f5a42a;
+    transform: scale(1.2);
+}
+
+#backbutton:active{
+    color: #f5a42a;
+}
