@@ -14,9 +14,6 @@ body{
 }
 
 .box{
-    border-style: solid;
-    border-radius: 20px;
-    border-color: antiquewhite;
     background-color: antiquewhite;
     width: 500px;
     height: 450px;
@@ -58,8 +55,20 @@ body{
     margin-bottom: 15px;
 }
 
+select, .textinput{
+    height: 25px;
+    border-radius: 50px;
+    font-family: "Acme";
+    font-size: 15px;
+    text-align: center;
+}
+
+.textinput {
+    width: 250px;
+}
+
 select{
-    width: 100px;
+    width: 150px;
 }
 
 .box2{
@@ -105,6 +114,19 @@ label{
     font-size: 15px;
 }
 
+.checkbox, .radio{
+    height: 15px;
+    width: 15px;
+}
+.checkbox{
+    accent-color: #f5a42a;
+
+}
+
+.radio{
+    accent-color: indigo;
+}
+
 .error{
     font-family: 'Acme';
     font-size: 15px;
@@ -132,23 +154,73 @@ label{
 #backbutton{
     font-family: 'Acme';
     font-size: 25px;
-    width: 300px;
     text-decoration: none;
     color: #f5a42a;
     border-style: solid;
     border-radius: 50px;
-    border-spacing: 20px;
     border-color: indigo;
     background-color: indigo;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #backbutton:hover{
     color: indigo;
     border-color: #f5a42a;
     background-color: #f5a42a;
-    transform: scale(1.2);
+    margin-top: 20px;
 }
 
 #backbutton:active{
     color: #f5a42a;
+}
+
+.highscore{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    height: 400px;
+    overflow: auto;
+}
+
+table, tr, td {
+    border-style: solid;
+}
+
+table{
+    border-collapse: collapse;
+    width: 30%;
+}
+
+thead{
+    font-family: 'Acme';
+    font-size: 25px;
+    text-align: center;
+    height: 30px;
+    width: 150px;
+    background-color: #f5a42a;
+}
+
+tbody{
+    font-family: 'Acme';
+    font-size: 20px;
+    text-align: center;
+    height: 30px;
+    width: 150px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

@@ -29,7 +29,7 @@ public class TriviaAPIController {
 
         String url = UriComponentsBuilder
             .fromUriString("https://the-trivia-api.com/v2/questions")
-            .queryParam("limit", limit)
+            .queryParam("limit", 50)
             .queryParam("difficulties", difficulty)
             .queryParam("categories", categoryList)
             .toUriString();
@@ -62,6 +62,11 @@ public class TriviaAPIController {
 
             QuizQuestion quizQuestion = new QuizQuestion(question, correctAnswer, allAnswers);
             quizList.add(quizQuestion);
+            Collections.shuffle(quizList);
+
+            if (quizList.size() == limit) {
+                break;
+            }
         }
 
         return quizList;

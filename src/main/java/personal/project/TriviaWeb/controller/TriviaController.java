@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import personal.project.TriviaWeb.model.Highscore;
 import personal.project.TriviaWeb.model.QuizForm;
 import personal.project.TriviaWeb.model.QuizQuestion;
 import personal.project.TriviaWeb.service.TriviaService;
@@ -59,7 +60,13 @@ public class TriviaController {
         model.addAttribute("currentQuestion", triviaSvc.getCurrentQuestion(quizList));
         model.addAttribute("score", triviaSvc.getScore());
 
+        Integer questionNo = triviaSvc.getQuestionNo();
+
+        model.addAttribute("questionNo", questionNo);
+
         session.setAttribute("quizList", quizList);
+        session.setAttribute("difficulty", difficulty);
+        session.setAttribute("questionNo", limit);
         
         return "quiz";
     }
@@ -82,6 +89,7 @@ public class TriviaController {
     public String getQuiz(HttpSession session, Model model) {
 
         model.addAttribute("score", triviaSvc.getScore());
+        model.addAttribute("questionNo", triviaSvc.getQuestionNo());
 
         List<QuizQuestion> quizList = (List<QuizQuestion>) session.getAttribute("quizList");
 
@@ -89,10 +97,55 @@ public class TriviaController {
             model.addAttribute("currentQuestion", triviaSvc.getCurrentQuestion(quizList));
             return "quiz";
         } else {
+            model.addAttribute("highscoreForm", new Highscore());
             model.addAttribute("score", triviaSvc.getScore());
-            triviaSvc.resetIndex();
-            session.invalidate();
-            return "complete";
+            session.setAttribute("highscore", triviaSvc.getScore());
+
+            return "highscore";
         }
+    }
+
+    @PostMapping(path = "/highscore")
+    public String postHighscore(@Valid @ModelAttribute("highscoreForm") Highscore highscore, BindingResult result, HttpSession session, Model model) {
+
+        if (result.hasErrors()) {
+            Integer score = (Integer)session.getAttribute("highscore");
+            model.addAttribute("score", score);
+            return "highscore";
+        }
+
+        String name = highscore.getName();
+        Integer score = highscore.getHighscore();
+        String difficulty = session.getAttribute("difficulty").toString().toLowerCase();
+        Integer questionNo = (Integer) session.getAttribute("questionNo");
+        triviaSvc.saveHighscore(name, score, difficulty, questionNo);
+
+        List<Highscore> highscoreList = triviaSvc.getAllHighscore(difficulty, questionNo);
+        model.addAttribute("leaderboard", highscoreList);
+
+        difficulty = difficulty.substring(0, 1).toUpperCase() + difficulty.substring(1);
+        String title = String.format("Leaderboard for %s (%d Questions)", difficulty, questionNo);
+        model.addAttribute("title", title);
+
+        triviaSvc.resetIndex();
+        session.invalidate();
+
+        return "/leaderboard";
+    }
+
+    @GetMapping(path = "/highscore")
+    public String getLeaderboard(Model model) {
+
+        String difficulty = "easy";
+        Integer questionNo = 10;
+
+        List<Highscore> highscoreList = triviaSvc.getAllHighscore(difficulty, questionNo);
+        model.addAttribute("leaderboard", highscoreList);
+
+        difficulty = difficulty.substring(0, 1).toUpperCase() + difficulty.substring(1);
+        String title = String.format("Leaderboard for %s (%d Questions)", difficulty, questionNo);
+        model.addAttribute("title", title);
+
+        return "/leaderboard";
     }
 }

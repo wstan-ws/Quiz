@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/leaderboard.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <title>Leaderboard</title>
+    </head>
+    <body>
+        <main>
+            <div class="header">
+                <a href="/home">
+                    <img id="logo" src="/logo.png" alt="">
+                </a>
+            </div>
+    
+            <div id="header">
+                <h1 data-th-text="${title}"></h1>
+            </div>
+    
+            <div id="leaderboard">
+                <div class="ribbon"></div>
+                <table>
+                  <tr data-th-each="entry : ${leaderboard}">
+                    <td class="number" data-th-text="${entry.ranking}"></td>
+                    <td class="name" data-th-text="${entry.name}"></td>
+                    <td class="points" data-th-text="${entry.highscore}"></td>
+                  </tr>
+                </table>
+                <div class="button">
+                    <a href="/home" id="button">Back to Home</a>
+                </div>
+              </div>
+        </main>
+    </body>
+</html>

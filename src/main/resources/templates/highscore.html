@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <title>Highscore</title>
+    </head>
+    <body>
+        
+        <div class="header">
+            <a href="/home">
+                <img id="logo" src="/logo.png" alt="">
+            </a>
+        </div>
+
+        <div class="body">
+            <div class="box2">
+                <form method="POST" data-th-action="@{/highscore}" data-th-object="${highscoreForm}">
+                    <table>
+                        <tr>
+                            <p class="question">Enter Name: </p>
+                            <input type="text" class="textinput" placeholder="Name" data-th-field="*{name}">
+                            <br>
+                            <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}" data-th-errorclass="error"></span>
+                        </tr>
+                        <tr>
+                            <p class="question">Highscore: <span data-th-text="${score}"></span></p>
+                            <input type="hidden" name="highscore" data-th-value="${score}">
+                        </tr>
+                        <br>
+                        <button class="button" type="submit">Submit Highscore</button>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>
